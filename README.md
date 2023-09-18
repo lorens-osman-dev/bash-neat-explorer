@@ -1,4 +1,4 @@
-# lorens_neat_browser
+# bash_neat_explorer
 
 Some functions that help with filesystem navigation in bash terminal in Windows WSL.
 
@@ -8,15 +8,6 @@ The `e()` function is a bash function designed to run Windows Explorer to naviga
 
 - If you don't provide an argument, Windows Explorer will open in the current directory in the bash command line.
 - If the argument is a file, Windows Explorer will open the corresponding Windows program to open the file.
-
-### Screenshots
-
->inside vscode
->
-![vs code bash neat explorer](https://github.com/lorens-osman-dev/bash-neat-explorer/blob/assets/vscode_terminal.png?raw=true)
->inside windows wsl terminal
-
-![windows wsl neat explorer](https://github.com/lorens-osman-dev/bash-neat-explorer/blob/assets/terminal.png?raw=true)
 
 ### How To Use
 
@@ -73,10 +64,19 @@ n file.txt
 
 
 
-## lorens_neat_browser() function
+## bash_neat_explorer() function
 
-The `lorens_neat_browser()` function is a neat command-line tool that allows you to navigate the file system with ease. It modifies the normal behavior of the `cd` command  when you don't enter any argument, instead of taking you to the user's home directory, it will launch a browsing mode .
+The `bash_neat_explorer()` function is a neat command-line tool that allows you to navigate the file system with ease. It modifies the normal behavior of the `cd` command  when you don't enter any argument, instead of taking you to the user's home directory, it will launch a browsing mode .
  In browsing mode, you can use the arrow keys to move around the directories and files, and press Enter to change directory or open a file with the corresponding Windows program. You can also use the fuzzy search to find what you need. To exit browsing mode, just press Esc. The function preserves the other functionalities of the `cd` command, such as changing directories with arguments or using shortcuts like `cd ..` or ` cd ~`.
+
+### Screenshots
+
+>inside vscode
+>
+![vs code bash neat explorer](https://github.com/lorens-osman-dev/bash-neat-explorer/blob/assets/vscode_terminal.png?raw=true)
+>inside windows wsl terminal
+
+![windows wsl neat explorer](https://github.com/lorens-osman-dev/bash-neat-explorer/blob/assets/terminal.png?raw=true)
 
 ### How To Use
 
@@ -99,7 +99,7 @@ cd() {
     [[ $# -eq 0 ]] && return
     builtin cd "$@"
 }
-function lorens_neat_browser() {
+function bash_neat_explorer() {
     fzf_cool="
     --height 40% --reverse  --border=sharp       
     --info=inline
@@ -116,21 +116,21 @@ function lorens_neat_browser() {
             new_selection=${selection:6}
             if [[ -d "$new_selection" ]]
                 then
-                    cd "$new_selection" && lorens_neat_browser
+                    cd "$new_selection" && bash_neat_explorer
                 elif [[ -f "$new_selection" ]]
                 then
                     e "$new_selection"
                 fi
         elif [[ "${#selection}" -eq 3 ]]; then
             new_selection=${selection:1}
-            cd .. && lorens_neat_browser
+            cd .. && bash_neat_explorer
         else
             echo ""
         fi
     fi
   
 }
-alias cd="lorens_neat_browser"
+alias cd="bash_neat_explorer"
 
 ```
 

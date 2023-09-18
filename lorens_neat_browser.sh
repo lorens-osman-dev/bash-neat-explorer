@@ -14,17 +14,17 @@ n(){
     $app $1
 }
 
-#--------|[ lorens_neat_browser ]|--------#
+#--------|[ bash_neat_explorer ]|--------#
 #When you use the "cd" command without any additional information, it will automatically 
 #take you to your home directory. The purpose of the "cd()" function is to cancel this behavior.
-#Note cd() invoked in lorens_neat_browser()
+#Note cd() invoked in bash_neat_explorer()
 cd() {
     [[ $# -eq 0 ]] && return
     builtin cd "$@"
 }
 # n() notepad 
 
-function lorens_neat_browser() {
+function bash_neat_explorer() {
     fzf_cool="
     --height 40% --reverse  --border=sharp       
     --info=inline
@@ -41,19 +41,19 @@ function lorens_neat_browser() {
             new_selection=${selection:6}
             if [[ -d "$new_selection" ]]
                 then
-                    cd "$new_selection" && lorens_neat_browser
+                    cd "$new_selection" && bash_neat_explorer
                 elif [[ -f "$new_selection" ]]
                 then
                     e "$new_selection"
                 fi
         elif [[ "${#selection}" -eq 3 ]]; then
             new_selection=${selection:1}
-            cd .. && lorens_neat_browser
+            cd .. && bash_neat_explorer
         else
             echo ""
         fi
     fi
   
 }
-alias cd="lorens_neat_browser"
+alias cd="bash_neat_explorer"
 #--------|[]|--------#
