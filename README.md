@@ -8,6 +8,16 @@ The `e()` function is a bash function designed to run Windows Explorer to naviga
 
 - If you don't provide an argument, Windows Explorer will open in the current directory in the bash command line.
 - If the argument is a file, Windows Explorer will open the corresponding Windows program to open the file.
+
+### Screenshots
+
+>inside vscode
+>
+![vs code bash neat explorer](https://github.com/lorens-osman-dev/bash-neat-explorer/blob/assets/vscode_terminal.png?raw=true)
+>inside windows wsl terminal
+
+![windows wsl neat explorer](https://github.com/lorens-osman-dev/bash-neat-explorer/blob/assets/terminal.png?raw=true)
+
 ### How To Use
 
 To use the `e()` function, you can copy it to your `.bashrc` file.
