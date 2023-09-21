@@ -71,12 +71,12 @@ The `bash_neat_explorer()` function is a neat command-line tool that allows you 
 
 ### Screenshots
 
->inside vscode
+>inside vscode terminal
 >
-![vs code bash neat explorer](https://github.com/lorens-osman-dev/bash-neat-explorer/blob/assets/vscode_terminal.png?raw=true)
->inside windows wsl terminal
-
-![windows wsl neat explorer](https://github.com/lorens-osman-dev/bash-neat-explorer/blob/assets/terminal.png?raw=true)
+![neat explorer vscode terminal](https://github.com/lorens-osman-dev/bash-neat-explorer/blob/assets/neat%20explorer_vscode_terminal.png?raw=true)
+>inside windows WSL terminal
+>
+![neat explorer windows terminal](https://github.com/lorens-osman-dev/bash-neat-explorer/blob/assets/neat%20explorer%20windows%20terminal.png?raw=true)
 
 ### How To Use
 
@@ -167,12 +167,12 @@ Once a command is selected, it’s placed on your command line, ready for execut
 
 ### Screenshots
 
->inside vscode
+>inside vscode terminal
 >
-![vs code bash neat explorer](https://github.com/lorens-osman-dev/bash-neat-explorer/blob/assets/vscode_terminal.png?raw=true)
->inside windows wsl terminal
-
-![windows wsl neat explorer](https://github.com/lorens-osman-dev/bash-neat-explorer/blob/assets/terminal.png?raw=true)
+![neat history vs code terminal](https://github.com/lorens-osman-dev/bash-neat-explorer/blob/assets/neat%20history_vscode_terminal.png?raw=true)
+>inside windows WSL terminal
+>
+![neat history windows terminal](https://github.com/lorens-osman-dev/bash-neat-explorer/blob/assets/neat%20history%20windows%20%20terminal.png?raw=true)
 
 ### How To Use
 
@@ -220,12 +220,12 @@ Once a command is selected, it’s placed on your command line, ready for execut
 
 ### Screenshots
 
->inside vscode
+>inside vscode terminal
 >
-![vs code bash neat explorer](https://github.com/lorens-osman-dev/bash-neat-explorer/blob/assets/vscode_terminal.png?raw=true)
+![neat history search vs code terminal](https://github.com/lorens-osman-dev/bash-neat-explorer/blob/assets/neat%20history%20search_vscode_terminal.png?raw=true)
 >inside windows wsl terminal
-
-![windows wsl neat explorer](https://github.com/lorens-osman-dev/bash-neat-explorer/blob/assets/terminal.png?raw=true)
+>
+![neat history search windows terminal](https://github.com/lorens-osman-dev/bash-neat-explorer/blob/assets/neat%20history%20search%20windows%20terminal.png?raw=true)
 
 ### How To Use
 
