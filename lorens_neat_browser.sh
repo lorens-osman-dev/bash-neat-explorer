@@ -18,17 +18,17 @@ n(){
     $app $1
 }
 
-#--------|[ bash_neat_explorer ]|--------#
+#--------|[ neat_explorer ]|--------#
 #When you use the "cd" command without any additional information, it will automatically 
 #take you to your home directory. The purpose of the "cd()" function is to cancel this behavior.
-#Note cd() invoked in bash_neat_explorer()
+#Note cd() invoked in neat_explorer()
 cd() {
     [[ $# -eq 0 ]] && return
     builtin cd "$@"
 }
 # n() notepad 
 
-function bash_neat_explorer() {
+function neat_explorer() {
     # --border-label=lorens
     info_inline_seprator=']'
     fzf_cool="
@@ -51,48 +51,22 @@ function bash_neat_explorer() {
             new_selection=${selection:6}
             if [[ -d "$new_selection" ]]
                 then
-                    cd "$new_selection" && bash_neat_explorer
+                    cd "$new_selection" && neat_explorer
                 elif [[ -f "$new_selection" ]]
                 then
                     e "$new_selection"
                 fi
         elif [[ "${#selection}" -eq 3 ]]; then
             new_selection=${selection:1}
-            cd .. && bash_neat_explorer
+            cd .. && neat_explorer
         else
             echo ""
         fi
     fi
   
 }
-alias cd="bash_neat_explorer"
+alias cd="neat_explorer"
 #--------|[]|--------#
-
-
-#--------|[ neat_history_search ]|--------#
-bind -r '\C-h'
-neat_history_search(){
-    local info_inline_seprator=']'
-    local fzf_options="
-    --reverse
-    --bind=tab:down,btab:up  
-    --history-size=5000
-    --height 40% 
-    --info=inline:$info_inline_seprator
-    --separator=""
-    --prompt=[
-    --border=none      
-    --pointer=•
-    --color=dark,hl:red:regular,fg+:white:regular,hl+:red:regular:reverse,query:white:regular,info:#cb4b16,prompt:red:bold,pointer:red:bold
-    "
-    local cmmand_line_text=$READLINE_LINE
-    local result=$(history | sort -r| awk '{$1=""; if (!seen[$0]++) print $0}'| fzf --query="^$cmmand_line_text" $fzf_options)
-    READLINE_LINE="${result# }"
-    READLINE_POINT=${#READLINE_LINE}
-}
-bind -x '"\C-h": neat_history_search'
-
-
 
 #--------|[ neat_hisory ]|--------#
 bind -r '\t'
@@ -117,6 +91,29 @@ neat_history(){
 }
 bind -x '"\t": neat_history'
 
+
+#--------|[ neat_history_search ]|--------#
+bind -r '\C-h'
+neat_history_search(){
+    local info_inline_seprator=']'
+    local fzf_options="
+    --reverse
+    --bind=tab:down,btab:up  
+    --history-size=5000
+    --height 40% 
+    --info=inline:$info_inline_seprator
+    --separator=""
+    --prompt=[
+    --border=none      
+    --pointer=•
+    --color=dark,hl:red:regular,fg+:white:regular,hl+:red:regular:reverse,query:white:regular,info:#cb4b16,prompt:red:bold,pointer:red:bold
+    "
+    local cmmand_line_text=$READLINE_LINE
+    local result=$(history | sort -r| awk '{$1=""; if (!seen[$0]++) print $0}'| fzf --query="^$cmmand_line_text" $fzf_options)
+    READLINE_LINE="${result# }"
+    READLINE_POINT=${#READLINE_LINE}
+}
+bind -x '"\C-h": neat_history_search'
 
 #--------|[oh-my-posh-theme]|--------#
 #eval "$(oh-my-posh init bash --config ~/oh-my-posh-theme/lorens.omp.json)"

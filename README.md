@@ -64,9 +64,9 @@ n file.txt
 
 
 
-## bash_neat_explorer() function
+## neat_explorer() function
 
-The `bash_neat_explorer()` function is a neat command-line tool that allows you to navigate the file system with ease. It modifies the normal behavior of the `cd` command  when you don't enter any argument, instead of taking you to the user's home directory, it will launch a browsing mode .
+The `neat_explorer()` function is a neat command-line tool that allows you to navigate the file system with ease. It modifies the normal behavior of the `cd` command  when you don't enter any argument, instead of taking you to the user's home directory, it will launch a browsing mode .
  In browsing mode, you can use the arrow keys to move around the directories and files, and press Enter to change directory or open a file with the corresponding Windows program. You can also use the fuzzy search to find what you need. To exit browsing mode, just press Esc. The function preserves the other functionalities of the `cd` command, such as changing directories with arguments or using shortcuts like `cd ..` or ` cd ~`.
 
 ### Screenshots
@@ -101,7 +101,7 @@ cd() {
 }
 # n() notepad 
 
-function bash_neat_explorer() {
+function neat_explorer() {
     # --border-label=lorens
     info_inline_seprator=']'
     fzf_cool="
@@ -124,21 +124,21 @@ function bash_neat_explorer() {
             new_selection=${selection:6}
             if [[ -d "$new_selection" ]]
                 then
-                    cd "$new_selection" && bash_neat_explorer
+                    cd "$new_selection" && neat_explorer
                 elif [[ -f "$new_selection" ]]
                 then
                     e "$new_selection"
                 fi
         elif [[ "${#selection}" -eq 3 ]]; then
             new_selection=${selection:1}
-            cd .. && bash_neat_explorer
+            cd .. && neat_explorer
         else
             echo ""
         fi
     fi
   
 }
-alias cd="bash_neat_explorer"
+alias cd="neat_explorer"
 
 ```
 
