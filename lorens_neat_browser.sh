@@ -1,7 +1,5 @@
 #TODO:
-#[ ] documment 
-#[ ] uodate the picturs in readme
-#[ ] update neat explorer in readme
+
 #--------|[ Explorer ]|--------#
 e(){
     app="/mnt/c/Windows/explorer.exe"
