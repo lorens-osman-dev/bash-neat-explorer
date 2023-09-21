@@ -162,7 +162,9 @@ cd foo/bar
 ## neat_history() function
 
 The `neat_history()` function is a neat tool for enhancing your command line experience in Bash. It provides an interactive interface to navigate through your command history, allowing you to easily find and reuse past commands.
-The interface is intuitive and easy to use. Simply press the TAB key to enter the choosing mode. You can then navigate through the options by pressing TAB to move down or Q to move up. To confirm your selection, press SPACE. If you want to exit the menu, just press ESC.
+
+The interface is intuitive and easy to use. Simply press the `TAB` key to enter the choosing mode. You can then navigate through the options by pressing `TAB` to move down or `Q` to move up. To confirm your selection, press `SPACE`. If you want to exit the menu, just press `ESC`.
+
 Once a command is selected, it’s placed on your command line, ready for execution or further editing. This function is a great addition to any developer’s toolkit, making command line navigation faster and more efficient.
 
 ### Screenshots
@@ -212,10 +214,13 @@ bind -x '"\t": neat_history'
 
 
 
+
 ## neat_history_search() function
 
 The `neat_history_search` function is a neat tool for Bash users that enhances the command line experience by providing  interactive search tool for your command history.
-To use this function, press `ctrl+h` to enter the history search mode. You can then type any string to search through your command history. Navigate through the search results by pressing `TAB` or `down arrow ↓` to move down, or `up arrow ↑` to move up. Confirm your selection by pressing `enter`. If you want to exit the menu, just press ESC.
+
+To use this function, press `ctrl+h` to enter the history search mode. You can then type any string to search through your command history. Navigate through the search results by pressing `TAB` or `down arrow ↓` to move down, or `up arrow ↑` to move up. Confirm your selection by pressing `enter`. If you want to exit the menu, just press `ESC`.
+
 Once a command is selected, it’s placed on your command line, ready for execution or further editing. This function is a great addition to any developer’s toolkit, making command line navigation faster and more efficient.
 
 ### Screenshots
