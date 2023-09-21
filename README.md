@@ -67,7 +67,14 @@ n file.txt
 ## neat_explorer() function
 
 The `neat_explorer()` function is a neat command-line tool that allows you to navigate the file system with ease. It modifies the normal behavior of the `cd` command  when you don't enter any argument, instead of taking you to the user's home directory, it will launch a browsing mode .
- In browsing mode, you can use the arrow keys to move around the directories and files, and press Enter to change directory or open a file with the corresponding Windows program. You can also use the fuzzy search to find what you need. To exit browsing mode, just press Esc. The function preserves the other functionalities of the `cd` command, such as changing directories with arguments or using shortcuts like `cd ..` or ` cd ~`.
+
+In browsing mode, you can use the arrow keys to move around the directories and files, and press `Enter` to change directory or open a file with the corresponding Windows program.
+
+You can also use the fuzzy search to find what you need. 
+
+To exit browsing mode, just press `Esc`. 
+
+The function preserves the other functionalities of the `cd` command, such as changing directories with arguments or using shortcuts like `cd ..` or ` cd ~`.
 
 ### Screenshots
 
@@ -93,14 +100,11 @@ The `neat_explorer()` function is a neat command-line tool that allows you to na
 
 2. Copy the **functions**  to your `.bashrc` file.
   
-
 ```bash
 cd() {
     [[ $# -eq 0 ]] && return
     builtin cd "$@"
 }
-# n() notepad 
-
 function neat_explorer() {
     # --border-label=lorens
     info_inline_seprator=']'
@@ -163,9 +167,15 @@ cd foo/bar
 
 The `neat_history()` function is a neat tool for enhancing your command line experience in Bash. It provides an interactive interface to navigate through your command history, allowing you to easily find and reuse past commands.
 
-The interface is intuitive and easy to use. Simply press the `TAB` key to enter the choosing mode. You can then navigate through the options by pressing `TAB` to move down or `Q` to move up. To confirm your selection, press `SPACE`. If you want to exit the menu, just press `ESC`.
+The interface is intuitive and easy to use. Simply press the `TAB` key to enter the choosing mode. You can then navigate through the options by pressing `TAB` to move down or `Q` to move up. 
 
-Once a command is selected, it’s placed on your command line, ready for execution or further editing. This function is a great addition to any developer’s toolkit, making command line navigation faster and more efficient.
+To confirm your selection, press `SPACE` or `ENTER`. 
+
+If you want to exit the menu, just press `ESC`.
+
+Once a command is selected, it’s placed on your command line, ready for execution or further editing. 
+
+This function is a great addition to any developer’s toolkit, making command line navigation faster and more efficient.
 
 ### Screenshots
 
@@ -188,7 +198,6 @@ Once a command is selected, it’s placed on your command line, ready for execut
 
 2. Copy the **functions**  to your `.bashrc` file.
   
-
 ```bash
 bind -r '\t'
 neat_history(){
@@ -219,9 +228,19 @@ bind -x '"\t": neat_history'
 
 The `neat_history_search` function is a neat tool for Bash users that enhances the command line experience by providing  interactive search tool for your command history.
 
-To use this function, press `ctrl+h` to enter the history search mode. You can then type any string to search through your command history. Navigate through the search results by pressing `TAB` or `down arrow ↓` to move down, or `up arrow ↑` to move up. Confirm your selection by pressing `enter`. If you want to exit the menu, just press `ESC`.
+To use this function, press `ctrl+h` to enter the history search mode. 
 
-Once a command is selected, it’s placed on your command line, ready for execution or further editing. This function is a great addition to any developer’s toolkit, making command line navigation faster and more efficient.
+Then type any string to search through your command history. 
+
+Navigate through the search results by pressing `TAB` or `down arrow ↓` to move down, or `up arrow ↑` to move up. 
+
+Confirm your selection by pressing `enter`. 
+
+If you want to exit the menu, just press `ESC`.
+
+Once a command is selected, it’s placed on your command line, ready for execution or further editing. 
+
+This function is a great addition to any developer’s toolkit, making command line navigation faster and more efficient.
 
 ### Screenshots
 
@@ -244,7 +263,6 @@ Once a command is selected, it’s placed on your command line, ready for execut
 
 2. Copy the **functions**  to your `.bashrc` file.
   
-
 ```bash
 bind -r '\C-h'
 neat_history_search(){
