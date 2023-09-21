@@ -99,10 +99,18 @@ cd() {
     [[ $# -eq 0 ]] && return
     builtin cd "$@"
 }
+# n() notepad 
+
 function bash_neat_explorer() {
+    # --border-label=lorens
+    info_inline_seprator=']'
     fzf_cool="
-    --height 40% --reverse  --border=sharp       
-    --info=inline
+    --reverse  
+    --border=sharp 
+    --height 40%       
+    --info=inline:$info_inline_seprator
+    --separator=""
+    --prompt=[
     --pointer=→
     --color=fg:#839496,bg+:#242424,spinner:#719e07,hl+:#5fff87,disabled:#ce392c   
     --color=header:#586e75,info:#cb4b16,pointer:#5fff87   
@@ -148,3 +156,114 @@ cd foo
 cd foo/bar
 
 ```
+
+
+
+## neat_history() function
+
+The `neat_history()` function is a neat tool for enhancing your command line experience in Bash. It provides an interactive interface to navigate through your command history, allowing you to easily find and reuse past commands.
+The interface is intuitive and easy to use. Simply press the TAB key to enter the choosing mode. You can then navigate through the options by pressing TAB to move down or Q to move up. To confirm your selection, press SPACE. If you want to exit the menu, just press ESC.
+Once a command is selected, it’s placed on your command line, ready for execution or further editing. This function is a great addition to any developer’s toolkit, making command line navigation faster and more efficient.
+
+### Screenshots
+
+>inside vscode
+>
+![vs code bash neat explorer](https://github.com/lorens-osman-dev/bash-neat-explorer/blob/assets/vscode_terminal.png?raw=true)
+>inside windows wsl terminal
+
+![windows wsl neat explorer](https://github.com/lorens-osman-dev/bash-neat-explorer/blob/assets/terminal.png?raw=true)
+
+### How To Use
+
+1. You need  [fzf](https://github.com/junegunn/fzf).
+ 
+> **fzf** install
+> >`brew install fzf` or
+> >`sudo apt install fzf`
+>
+
+
+2. Copy the **functions**  to your `.bashrc` file.
+  
+
+```bash
+bind -r '\t'
+neat_history(){
+    local fzf_options="
+    --disabled
+    --reverse
+    --bind=tab:down,q:up,space:accept
+    --height 40% 
+    --no-info
+    --no-separator
+    --border=none      
+    --pointer=• 
+    --color=dark,hl:red:regular,fg+:white:regular,hl+:red:regular:reverse,query:white:regular,info:#cb4b16,prompt:#dd4814:bold,pointer:#dd4814:bold
+    "
+    local cmmand_line_text=$READLINE_LINE
+    local result=$(history | sort -r| awk '{$1=""; if (!seen[$0]++) print $0}'| fzf   --prompt="TAB: ↓  Q: ↑  SPACE: Choose ESC: Close" $fzf_options)
+    READLINE_LINE="${result# }"
+    READLINE_POINT=${#READLINE_LINE}
+}
+bind -x '"\t": neat_history'
+
+```
+
+
+
+## neat_history_search() function
+
+The `neat_history_search` function is a neat tool for Bash users that enhances the command line experience by providing  interactive search tool for your command history.
+To use this function, press `ctrl+h` to enter the history search mode. You can then type any string to search through your command history. Navigate through the search results by pressing `TAB` or `down arrow ↓` to move down, or `up arrow ↑` to move up. Confirm your selection by pressing `enter`. If you want to exit the menu, just press ESC.
+Once a command is selected, it’s placed on your command line, ready for execution or further editing. This function is a great addition to any developer’s toolkit, making command line navigation faster and more efficient.
+
+### Screenshots
+
+>inside vscode
+>
+![vs code bash neat explorer](https://github.com/lorens-osman-dev/bash-neat-explorer/blob/assets/vscode_terminal.png?raw=true)
+>inside windows wsl terminal
+
+![windows wsl neat explorer](https://github.com/lorens-osman-dev/bash-neat-explorer/blob/assets/terminal.png?raw=true)
+
+### How To Use
+
+1. You need  [fzf](https://github.com/junegunn/fzf).
+ 
+> **fzf** install
+> >`brew install fzf` or
+> >`sudo apt install fzf`
+>
+
+
+2. Copy the **functions**  to your `.bashrc` file.
+  
+
+```bash
+bind -r '\C-h'
+neat_history_search(){
+    local info_inline_seprator=']'
+    local fzf_options="
+    --reverse
+    --bind=tab:down,btab:up  
+    --history-size=5000
+    --height 40% 
+    --info=inline:$info_inline_seprator
+    --separator=""
+    --prompt=[
+    --border=none      
+    --pointer=•
+    --color=dark,hl:red:regular,fg+:white:regular,hl+:red:regular:reverse,query:white:regular,info:#cb4b16,prompt:red:bold,pointer:red:bold
+    "
+    local cmmand_line_text=$READLINE_LINE
+    local result=$(history | sort -r| awk '{$1=""; if (!seen[$0]++) print $0}'| fzf --query="^$cmmand_line_text" $fzf_options)
+    READLINE_LINE="${result# }"
+    READLINE_POINT=${#READLINE_LINE}
+}
+bind -x '"\C-h": neat_history_search'
+
+```
+
+
+
