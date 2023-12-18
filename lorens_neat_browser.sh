@@ -60,9 +60,10 @@ function usful_commands() {
     
     fzf_cool="
     --border-label=$header
+    --prompt=downAroww:down,upArrow:up,ESC:dimess,Enter:print_command
+ 
     --reverse  
     --border=sharp 
-    --prompt=$header
     --pointer=➜
     --disabled
     --no-info
