@@ -53,11 +53,13 @@ n(){
 
 
 function usful_commands() {
+    
     commands_file='/home/lorens/Files/usefull_commands.txt'
     header='CommandsList'
-    # --border-label=lorens
+ 
     
     fzf_cool="
+    --border-label=$header
     --reverse  
     --border=sharp 
     --prompt=$header
@@ -72,20 +74,30 @@ function usful_commands() {
     echo "Commands List file path is : $commands_file" && gnome-text-editor -i $commands_file
     elif [ "$1" = "add" ]; then
     echo "Commands List file path is : $commands_file" && gnome-text-editor -i $commands_file
-    elif [ -z $1 ];
-    then
+    elif [ -z $1 ];then
         # grep for delete empty lines , and the lines that start with #
         #awk command to filter out lines that start with “*” or “#”
         #The sed -e 's/^[ \t]*//' part of the command will remove any spaces or tabs at the beginning of each line
+        
         cat $commands_file |grep -v '^$' | grep -v '^#'|sed -e 's/^[ \t]*//'| fzf $fzf_cool |  awk '!/^[\*]/' 
+
+      
     fi
+
+    
   
 }
 alias uc="usful_commands"
 
-
-
-#--------|[]|--------#
+#--------|[ neat_explorer ]|--------#
+#When you use the "cd" command without any additional information, it will automatically 
+#take you to your home directory. The purpose of the "cd()" function is to cancel this behavior.
+#Note cd() invoked in neat_explorer()
+cd() {
+    [[ $# -eq 0 ]] && return
+    builtin cd "$@"
+}
+# n() notepad 
 
 function neat_explorer() {
     # --border-label=lorens
@@ -97,16 +109,15 @@ function neat_explorer() {
     --info=inline:$info_inline_seprator
     --separator=""
     --prompt=[
-    --pointer=➜
+    --pointer=→
     --color=fg:#839496,bg+:#242424,spinner:#719e07,hl+:#5fff87,disabled:#ce392c   
     --color=header:#586e75,info:#cb4b16,pointer:#5fff87   
     --color=marker:#719e07,fg+:#839496,prompt:#5fff87,hl:#719e07
     "
-  
     cd $1
     if [ -z $1 ];
     then
-        selection="$(exa --tree --level=1 --group-directories-first --icons -a| fzf --header=$(pwd) $fzf_cool)"
+        selection="$(exa --tree --level=1 --group-directories-first --icons -a | fzf --header=$(pwd) $fzf_cool)"
         if [[ "${#selection}" -gt 6 ]]; then
             new_selection=${selection:6}
             if [[ -d "$new_selection" ]]
@@ -126,8 +137,6 @@ function neat_explorer() {
   
 }
 alias cd="neat_explorer"
-
-
 #--------|[]|--------#
 
 #--------|[ neat_hisory ]|--------#
